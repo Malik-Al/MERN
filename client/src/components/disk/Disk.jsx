@@ -1,0 +1,75 @@
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {createDir, getFiles, uploadFile} from "../../action/file";
+import FileList from "./fileList/FileList";
+import './disk.css'
+import Popup from "./Popup";
+import {setCurrentDir, setPopupDisplay} from "../../reducers/fileReducer";
+
+
+const Disk = () => {
+    const dispatch = useDispatch()
+    const currentDir = useSelector(state => state.files.currentDir)
+    const dirStack = useSelector(state => state.files.dirStack)
+    const [dragEnter, setDragEnter] = useState(false)
+
+
+    useEffect(() => {
+        dispatch(getFiles(currentDir))
+    }, [currentDir])
+
+    function showPopupHandler(){
+        dispatch(setPopupDisplay('flex'))
+    }
+
+    function backClickHandler(){
+        const backDirId = dirStack.pop()
+        dispatch(setCurrentDir(backDirId))
+    }
+    function fileUpdateHandler(e){
+        const files = [...e.target.files]
+        files.forEach(file => dispatch(uploadFile(file, currentDir)))
+    }
+
+    function dragEnterHandler(e){
+        e.preventDefault()
+        e.stopPropagation()
+        setDragEnter(true)
+    }
+
+    function dragLeaveHandler(e){
+        e.preventDefault()
+        e.stopPropagation()
+        setDragEnter(false)
+    }
+
+    function dropHandler(e){
+        e.preventDefault()
+        e.stopPropagation()
+        const files = [...e.dataTransfer.files]
+        files.forEach(file => dispatch(uploadFile(file, currentDir)))
+        setDragEnter(false)
+
+    }
+
+    return (!dragEnter ?
+            <div className='disk' onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragEnterHandler}>
+               <div className="disk__btns">
+                   <button className="disk__back" onClick={() => backClickHandler()}>Назад</button>
+                   <button className="disk__create" onClick={() => showPopupHandler()}>Создать папку</button>
+                   <div className="disk__upload">
+                       <label htmlFor="disk__upload-input" className='disk__upload-label'>Загрузить файл</label>
+                       <input multiple={true} onChange={(e) => fileUpdateHandler(e)} type="file"  id='disk__upload-input' className='disk__upload-input'/>
+                   </div>
+               </div>
+                <FileList />
+                <Popup />
+            </div>
+            :
+            <div className='drag-area' onDrop={dropHandler} onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragEnterHandler}>
+                Перетащите файлы сюда
+            </div>
+    );
+};
+
+export default Disk;

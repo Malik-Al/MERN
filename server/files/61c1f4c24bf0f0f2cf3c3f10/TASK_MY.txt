@@ -1,0 +1,26 @@
+------------------------App-Shop-----------------------
+Frontend:
+Stack:
+ React [x]
+ Redux [x]
+ Typescript [x]
+ Webpack [x]
+ Swagger [x]
+ Reactstrap [x]
+	
+Backend:
+Stack:
+ Nest.js [x]
+ Postgres [x]
+ Docker [x]
+ Deploy heroku [x]
+
+Task:
+ Authentication Authorization ( email AND social networks AND number phone ) [x]
+ CRUD [x]
+ Pagination [x]
+ Basket for goods [x]
+ Git [x]
+ Filter search [x]
+ Admin panel [x]
+ Unit test [x]
