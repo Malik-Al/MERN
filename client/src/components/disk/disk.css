@@ -1,14 +1,20 @@
 .disk{
     margin-top: 20px;
 }
+.disk__upload{
+    margin-right: 10px;
+}
 .disk__btns{
     display: flex;
 }
 .disk__create{
     margin-left: 10px;
+    padding: 2px 10px;
+    border-radius: 5px;
 }
-.disk__upload{
-
+.disk__back{
+    padding: 2px 10px;
+    border-radius: 5px;
 }
 .disk__upload-input{
     display: none;
@@ -19,7 +25,11 @@
     cursor: pointer;
     margin-left: 10px;
 }
-
+.disk__select{
+    padding: 2px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
 
 .drag-area{
     width: 100%;
