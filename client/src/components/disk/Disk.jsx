@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {createDir, getFiles, uploadFile} from "../../action/file";
+import {getFiles, uploadFile} from "../../action/file";
 import FileList from "./fileList/FileList";
 import './disk.css'
 import Popup from "./Popup";
 import {setCurrentDir, setPopupDisplay} from "../../reducers/fileReducer";
+import Uploader from "./uploader/Uploader";
 
 
 const Disk = () => {
@@ -64,6 +65,7 @@ const Disk = () => {
                </div>
                 <FileList />
                 <Popup />
+                <Uploader/>
             </div>
             :
             <div className='drag-area' onDrop={dropHandler} onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragEnterHandler}>
