@@ -31,6 +31,32 @@
     border-radius: 5px;
 }
 
+
+.disk__list{
+    height: 20px;
+    width: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: no-repeat center center;
+    background-size: contain;
+    margin: 0 10px;
+    background-image: url("../../assets/img/list.svg");
+}
+
+.disk__plate{
+    height: 20px;
+    width: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: no-repeat center center;
+    background-size: contain;
+    margin: 0 10px;
+    background-image: url("../../assets/img/plate.svg");
+
+}
+
 .drag-area{
     width: 100%;
     height: calc(100vh - 50px - 40px);
