@@ -47,14 +47,19 @@
     flex-direction: column;
     align-items: center;
 }
+.file-plate__btn{
+    padding: 2px 8px;
+    border-radius: 5px;
+    color: black;
+}
 .file-plate__img{
     height: 100px;
     width: 100px;
 }
 .file-plate__btns{
-    /*display: none;*/
+    display: none;
 }
 
-.file-plate__btns:hover{
-    /*display: flex;*/
+.file-plate:hover .file-plate__btns{
+    display: flex;
 }
