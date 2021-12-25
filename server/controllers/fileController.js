@@ -175,10 +175,9 @@ class FileController{
             return res.json(user)
         }catch (e){
             console.log(e)
-            return res.status(400).json({message: "Upload avatar error"})
+            return res.status(400).json({message: "Delete avatar error"})
         }
     }
-
 
 }
 
