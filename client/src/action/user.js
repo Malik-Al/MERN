@@ -32,7 +32,6 @@ export const login = (email, password) => {
 
 }
 
-
 export const auth = () => {
     return async dispatch => {
         try {
